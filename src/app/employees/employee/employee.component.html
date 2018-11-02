@@ -1,0 +1,36 @@
+<form class="emp-form" #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+  <input name="EmployeeID" #EmployeeID="ngModel" [(ngModel)]="employeeService.selectedEmployee.EmployeeID">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input class="form-control" name="FirstName" #FirstName="ngModel" [(ngModel)]="employeeService.selectedEmployee.FirstName" placeholder="First Name">
+    </div>
+
+    <div class="form-group col-md-6">
+      <input class="form-control" name="LastName" #LastName="ngModel" [(ngModel)]="employeeService.selectedEmployee.LastName" placeholder="Last Name">
+      
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="functionalTitle">Functional Title</label>
+      <select id="functionalTitle" name="functionalTitleId" [(ngModel)]="employeeService.selectedEmployee.functionalTitleId" 
+          class="form-control">
+        <option *ngFor="let title of functionalTitles" [value]="title.functionalTitleId">
+          {{title.FunctionalTitle}}
+        </option>
+      </select>
+    </div>
+
+  </div>
+  
+  
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <button type="submit" class="btn btn-lg btn-block btn-info">
+        <i class="fa fa-floppy-o"></i> Submit</button>
+    </div>
+    <div class="form-group col-md-4">
+      <button type="button" class="btn btn-lg btn-block btn-secondary" (click)="resetForm(employeeForm)">
+        <i class="fa fa-repeat"></i> Reset</button>
+    </div>
+  </div>
+</form>
